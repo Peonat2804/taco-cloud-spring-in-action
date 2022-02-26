@@ -70,17 +70,9 @@ public class DesignTacoController {
     }
 
     @PostMapping
-    public String processDesign(Model model, @Valid Taco taco, Errors errors, @ModelAttribute Order order) {
+    public String processDesign(@Valid Taco taco, Errors errors, @ModelAttribute Order order) {
         if (errors.hasErrors()) {
             log.info("Has some Error");
-            List<Ingredient> ingredients = new ArrayList<Ingredient>();
-            ingredientRepo.findAll().forEach((i) -> ingredients.add(i));
-    
-            Type[] types = Ingredient.Type.values();
-            for (Type type : types) {
-                model.addAttribute(type.toString().toLowerCase(),
-                    filterByType(ingredients, type));
-            }
             return "design";
         }
 
