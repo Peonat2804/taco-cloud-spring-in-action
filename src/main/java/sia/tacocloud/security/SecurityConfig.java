@@ -62,14 +62,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/design", "/orders")
-                    .hasRole("USER")
+                // .antMatchers("/design", "/orders")
+                //     .hasRole("USER")
                 .antMatchers("/", "/**").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
             .and()
                 .formLogin()
                     .loginPage("/login")
             .and()
                 .logout()
-                    .logoutSuccessUrl("/");
+                    .logoutSuccessUrl("/")
+            .and()
+                .csrf().ignoringAntMatchers("/h2-console/**");
     }
 }

@@ -13,11 +13,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import lombok.Data;
 
 @Data
 @Entity
 @Table(name = "TACO")
+@RestResource(rel = "tacos", path = "tacos")
 public class Taco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
