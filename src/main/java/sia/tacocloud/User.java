@@ -47,21 +47,25 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
+        log.info("Check Account NON expired");
         return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
+        log.info("Check Account NON locked");
         return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
+        log.info("Check Credential NON Expired");
         return true;
     }
 
     @Override
     public boolean isEnabled() {
+        log.info("Check Enabled");
         return true;
     }
 }
